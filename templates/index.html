@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>IPL</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+</head>
+<body>
+ <div class="login">
+	<h1>IPL Score Prediction</h1>
+  <style> 
+  body
+  {
+    background-image: url("https://c4.wallpaperflare.com/wallpaper/599/783/829/hyderabad-cricketstadium-sport-wallpaper-preview.jpg");
+    background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  }
+  ::placeholder {
+  color: white;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+ color: white;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+ color: white;
+}
+
+ 
+  </style>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+      
+    	<input type="number" name="Runs" placeholder="Runs scored" required="required" />
+      <input type="number" name="Wickets" placeholder="Number of wickets that fell" required="required" />
+    	<input type="number" step=0.1 name="Overs"  placeholder="Number of overs bowled" required="required" />
+      <input type="number" name="Striker score" placeholder="Strikers current score" required="required" />
+      <input type="number" name="Non striker score" placeholder="Non strikers current score" required="required" />
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+    
+  
+    
+
+   <br>
+   <br>
+   {{ prediction_text }}
+ </div>
+</body>
+</html>
+
